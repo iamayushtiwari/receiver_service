@@ -1,5 +1,7 @@
 const Redis = require('redis')
-const redisClient = Redis.createClient()
+const redisClient = Redis.createClient({
+    url: 'redis://host.docker.internal:6379',
+  })
 
 redisConnect().catch(err => console.log(err));
 
