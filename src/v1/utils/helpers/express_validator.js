@@ -14,13 +14,5 @@ exports.validateErrors = (req, res, next) => {
     if (!errors.isEmpty()) {
         return res.status(200).send(new serviceResponse({ status: 400, errors: errors.array({ onlyFirstError: true }) }))
     }
-
-    /* deleting unaccessable fields */
-    delete req.body.created_at;
-    delete req.body.updated_at;
-    delete req.body.deleted_at;
-    delete req.body.created_by;
-    delete req.body.updated_by;
-    delete req.body.deleted_by;
     next();
 }
